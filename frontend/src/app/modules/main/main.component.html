@@ -1,0 +1,18 @@
+<div style="text-align:center">
+  <h1 style="display: flex; flex-direction: column;">
+    <span>
+      Main module
+    </span>
+    <span>
+      Loading timer: {{loadTime != 0 ? loadTime : 'STOP'}}
+    </span>
+  </h1>
+</div>
+<div style="text-align:center" *ngIf="(content$ | async) as content; else loading">
+  <main [innerHTML]="content"></main>
+</div>
+<ng-template #loading>
+  <div style="text-align:center">
+    Content download... Should appear in {{loadTime}} seconds!
+  </div>
+</ng-template>
