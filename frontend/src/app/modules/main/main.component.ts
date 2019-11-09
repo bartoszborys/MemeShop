@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
@@ -9,7 +10,25 @@ import { of, Observable } from 'rxjs';
 })
 export class MainComponent implements OnInit {
   public content$: Observable<string>;
-  public loadTime: number = 5;
+  public loadTime: number = 1;
+  public leeee: any = [
+    {
+      name: "Magdalenka",
+      age: 15
+    },
+    {
+      name: "Amadka",
+      age: 10
+    },
+    {
+      name: "Moniczka",
+      age: 5
+    },
+    {
+      name: "Bartusio",
+      age: 3
+    }
+  ];
 
   constructor() { }
 
