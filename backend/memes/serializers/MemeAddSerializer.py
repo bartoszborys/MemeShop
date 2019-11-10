@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from ..models.Meme import Meme
 
-class MemesSerializer(serializers.ModelSerializer):
+class MemesAddSerializer(serializers.ModelSerializer):
 
     author_id=serializers.IntegerField(source='author.id')
 
