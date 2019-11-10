@@ -6,9 +6,12 @@
       </div>
       <div class="navWrapper">
         <button mat-button [matMenuTriggerFor]="memes">Memy</button>
+        <button routerLink="/cart" mat-button>Koszyk</button>
+        <button routerLink="/add" mat-button>Wystaw</button>
       </div>
       <mat-menu #memes="matMenu">
         <button routerLink="/latest" mat-menu-item>Najnowsze</button>
+        <button routerLink="/" mat-menu-item>Popularne</button>
         <button routerLink="/memes" mat-menu-item>Wszystkie</button>
       </mat-menu>
       <span class="navbar__space-filler"></span>

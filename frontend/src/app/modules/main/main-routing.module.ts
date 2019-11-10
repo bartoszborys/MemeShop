@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main.component';
 import { MemesListComponent } from './components/memes-list/memes-list.component';
 import { LatestMemesComponent } from './components/latest-memes/latest-memes.component';
+import { MemeComponent } from './components/meme/meme.component';
+import { MemeCartComponent } from './components/meme-cart/meme-cart.component';
+import { AddMemeComponent } from './components/add-meme/add-meme.component';
 
 const routes: Routes = [
   {
@@ -11,8 +14,7 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        redirectTo: "latest",
-        pathMatch: "full"
+        redirectTo: "latest"
       },
       {
         path: "memes",
@@ -21,8 +23,24 @@ const routes: Routes = [
       {
         path: "latest",
         component: LatestMemesComponent
+      },
+      {
+        path: "memes/:id",
+        component: MemeComponent
+      },
+      {
+        path: "add",
+        component: AddMemeComponent
+      },
+      {
+        path: "cart",
+        component: MemeCartComponent
       }
     ]
+  },
+  {
+    path: "**",
+    redirectTo: ""
   }
 ];
 
