@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SignInComponent } from './sign.component';
 import { SignRoutingModule } from './sign-routing.module'
 import { MaterialsModule } from '../materials/materials.module';
+import { SignComponent } from './sign.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
 @NgModule({
-  declarations: [SignInComponent],
+  declarations: [
+    SignComponent, 
+    SignInComponent, 
+    SignUpComponent
+  ],
   imports: [
     CommonModule,
     SignRoutingModule,

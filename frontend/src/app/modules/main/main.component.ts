@@ -11,24 +11,6 @@ import { HttpClient } from '@angular/common/http';
 export class MainComponent implements OnInit {
   public content$: Observable<string>;
   public loadTime: number = 1;
-  public leeee: any = [
-    {
-      name: "Magdalenka",
-      age: 15
-    },
-    {
-      name: "Amadka",
-      age: 10
-    },
-    {
-      name: "Moniczka",
-      age: 5
-    },
-    {
-      name: "Bartusio",
-      age: 3
-    }
-  ];
 
   constructor() { }
 
