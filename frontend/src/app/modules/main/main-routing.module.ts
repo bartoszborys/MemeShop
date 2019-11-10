@@ -10,6 +10,11 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
+        path: "",
+        redirectTo: "latest",
+        pathMatch: "full"
+      },
+      {
         path: "memes",
         component: MemesListComponent
       },
