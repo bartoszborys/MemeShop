@@ -11,6 +11,7 @@ schema_view = get_swagger_view(title='Meme Shop API')
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/authorization/', include('authorization.urls')),
+    url(r'^api/memes/', include('memes.urls')),
 
     url(r'^auth-jwt-refresh/', refresh_jwt_token),
     url(r'^auth-jwt-verify/', verify_jwt_token),
