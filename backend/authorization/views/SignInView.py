@@ -14,8 +14,6 @@ from ..serializers.UserSignInSerializer import UserSignInSerializer
 
 class SignInView(GenericAPIView):
 
-    permission_classes = [AllowAny]
-    authentication_classes = []
     serializer_class = UserSignInSerializer
 
     def post(self, request, *args, **kwargs):
