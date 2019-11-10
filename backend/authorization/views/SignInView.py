@@ -13,7 +13,8 @@ from ..serializers.UserSignInSerializer import UserSignInSerializer
 
 
 class SignInView(GenericAPIView):
-
+    authentication_classes = []
+    permission_classes = [AllowAny]
     serializer_class = UserSignInSerializer
 
     def post(self, request, *args, **kwargs):

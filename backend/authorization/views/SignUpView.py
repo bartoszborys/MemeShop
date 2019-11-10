@@ -12,6 +12,9 @@ from ..serializers.UserSignUpSerializer import UserSignUpSerializer
 class SignUpView(GenericAPIView):
     serializer_class = UserSignUpSerializer
 
+    authentication_classes = []
+    permission_classes = [AllowAny]
+
     def post(self, request, *args, **kwargs):
         serializer = UserSignUpSerializer(data=request.data)
         if serializer.is_valid():
