@@ -2,7 +2,7 @@ from exceptions.InvalidCredentialsError import InvalidCredentialsError
 from exceptions.UnexpectedError import UnexpectedError
 from exceptions.UserExistsError import UserExistsError
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import (authentication_classes, permission_classes)
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
@@ -10,9 +10,10 @@ from ..serializers.UserSignUpSerializer import UserSignUpSerializer
 
 
 class SignUpView(GenericAPIView):
-    permission_classes = [AllowAny]
-    authentication_classes = []
     serializer_class = UserSignUpSerializer
+
+    authentication_classes = []
+    permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
         serializer = UserSignUpSerializer(data=request.data)
@@ -24,4 +25,4 @@ class SignUpView(GenericAPIView):
             user = serializer.save()
             if user:
                 return HttpResponse(status=201)
-        return HttpResponse(UnexpectedError(), status=400)
+        return JsonResponse(serializer.errors, status=500) 
