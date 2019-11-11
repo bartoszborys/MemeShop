@@ -1,5 +1,35 @@
 :host
   display: flex
-  flex-direction: row
-  flex-wrap: wrap
+  flex-direction: column
+  flex: 1 1 auto
+  margin: auto
+  height: 100%
   
+.card-list
+  width: 100%
+  min-height: 0
+  margin: 0 auto
+  overflow: hidden auto
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-evenly
+  .card-list__card
+    width: 300px
+    max-height: 600px
+    margin: 1em 0
+
+.search
+  margin-top: .5em
+  border-bottom: solid 1px gray
+  display: flex
+  justify-content: center
+  .search__filter
+    margin: 0 1em
+  
+.new
+  position: fixed
+  top: 90%
+  left: 94%
+  .new__button
+    height: 6vh
+    width: 3vw
