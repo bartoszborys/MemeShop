@@ -1,1 +1,8 @@
 <p>sign-in works!</p>
+<div class="signInForm">
+    <label for="username">Username</label>
+    <input type="text" required [(ngModel)]="personToSignIn.username" id="username">
+    <label for="password">Password</label>
+    <input type="text" required [(ngModel)]="personToSignIn.password" id="password">
+    <input type="button" value="Sign in" (click)="signIn()">
+</div>

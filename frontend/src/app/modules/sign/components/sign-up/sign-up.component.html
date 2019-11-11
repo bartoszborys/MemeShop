@@ -1,4 +1,4 @@
-<p (mouseover)="test()">{{personToSignUp.email}}!</p>
+<p (mouseover)="signUp()">{{personToSignUp.email}}!</p>
 <div class="signUpForm">
     <label for="username">Username</label>
     <input type="text" required [(ngModel)]="personToSignUp.username" id="username">
@@ -10,5 +10,5 @@
     <input type="text" required [(ngModel)]="personToSignUp.email" id="email">
     <label for="password">Password</label>
     <input type="text" required [(ngModel)]="personToSignUp.password" id="password">
-    <input type="button" value="Sign up" (click)="test()">
+    <input type="button" value="Sign up" (click)="signUp()">
 </div>

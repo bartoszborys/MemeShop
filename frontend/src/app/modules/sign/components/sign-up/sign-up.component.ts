@@ -23,11 +23,11 @@ export class SignUpComponent implements OnInit {
     
   }
 
-  async test() {
+  async signUp() {
     console.log(this.personToSignUp);
-    const result = await this.service.signIn(this.personToSignUp);
+    const result = await this.service.signUp(this.personToSignUp);
     result.subscribe(
-      success => console.log()
+      success => console.log("sign up worked")
     )
   }
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SignServiceService } from '../../services/sign-service/sign-service.service';
+import { SignInForm } from '../../models/sign-in-form.model';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  public personToSignIn: SignInForm = {
+    username: "",
+    password: ""
+  }
+
+  constructor(private service: SignServiceService) { }
 
   ngOnInit() {
+  }
+
+  async signIn() {
+    console.log(this.personToSignIn);
+    const result = await this.service.signIn(this.personToSignIn);
+    result.subscribe(
+      success => console.log("sign in worked")
+    )
   }
 
 }
