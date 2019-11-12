@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { MemeCard } from '../../models/meme-card.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-meme-card',
@@ -9,10 +10,14 @@ import { MemeCard } from '../../models/meme-card.model';
 export class MemeCardComponent implements OnInit {
   @Input() data: MemeCard;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
 
   }
 
+  @HostListener('click')
+  public onCardClick(){
+    this.router.navigate([`memes/${this.data.id}`])
+  }
 }
