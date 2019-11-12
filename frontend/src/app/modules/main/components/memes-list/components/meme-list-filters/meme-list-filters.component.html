@@ -1,0 +1,19 @@
+<mat-form-field class="filter">
+  <input type="text" matInput placeholder="Typ" [matAutocomplete]="autoGroup">
+  <mat-autocomplete #autoGroup="matAutocomplete">
+    <mat-option *ngFor="let name of ['a','b','c','a','b','c','a','b','c']" [value]="name">
+      {{name}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+<mat-form-field class="filter">
+  <input matInput type="text" placeholder="Nazwa" [(ngModel)]="value">
+  <button mat-button matSuffix mat-icon-button>
+    <mat-icon>search</mat-icon>
+  </button>
+  <button *ngIf="value" mat-button matSuffix mat-icon-button (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+<div class="space-filler"></div>
+<mat-icon class="filter-close" (click)="close.emit()">close</mat-icon>
