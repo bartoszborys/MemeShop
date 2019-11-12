@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import memesListMock from './memes.mock.database';
 import { of, Observable } from 'rxjs';
 import { MemeCard } from '../../models/meme-card.model';
-import { delay } from 'rxjs/operators';
+import { delay } from 'rxjs/operators'; 
 
 @Injectable({
   providedIn: 'root'
