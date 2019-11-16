@@ -1,4 +1,4 @@
-import { MemeCard } from "../../models/meme-card.model";
+import { MemeCard } from '../../components/memes-list/models/meme-card.model';
 
 const memesListMock: MemeCard[] = [
   {

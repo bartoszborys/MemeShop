@@ -9,17 +9,15 @@
 .list-container
   width: 100%
   min-height: 0
+  flex: 1 1 auto
   margin: 0 auto
   overflow: hidden auto
+
+.list-container__height-wrapper
   display: flex
   flex-wrap: wrap
-  justify-content: space-evenly
-
-.loading-spinner
-  margin: auto
-  display: flex
-  flex: 1 1 auto
-  flex-direction: column
+  max-width: 100%
+  margin: 0 auto
   justify-content: space-around
 
 .new
@@ -28,6 +26,7 @@
   bottom: 20px !important
   left: auto !important
   position: fixed !important
+  z-index: 9999
 
 .filter
   top: auto !important
@@ -36,3 +35,4 @@
   bottom: auto !important
   left: auto !important
   position: fixed !important
+  z-index: 9999

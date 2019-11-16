@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { delay } from 'rxjs/operators';
-import { of, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { MainLoadingBarService } from './services/main-loading-bar/main-loading-bar.service';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -9,19 +10,15 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./main.component.sass']
 })
 export class MainComponent implements OnInit {
-  public content$: Observable<string>;
-  public loadTime: number = 1;
+  public mainLoadingBar$: Observable<boolean>;
 
-  constructor() { }
+  constructor(
+    private service: MainLoadingBarService,
+    private router: Router
+    ) { }
 
   public async ngOnInit(): Promise<void> {
-    this.content$ = await this.getBackendRequest();
-  }
-
-  private async getBackendRequest() {
-    const time = this.loadTime;
-    const interval = setInterval( ()=> this.loadTime--, 1000);
-    setTimeout( ()=> clearInterval(interval), 1000 * time);
-    return of( await fetch('http://127.0.0.1:8000').then(response => response.text()) ).pipe( delay(this.loadTime * 1000) );
+    this.mainLoadingBar$ = this.service.progressBar$;
+    this.router.events.subscribe( event => this.service.deactiveProgressBar() );
   }
 }

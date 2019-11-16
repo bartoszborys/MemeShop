@@ -1,12 +1,9 @@
 <app-meme-list-filters *ngIf="filterVisible" (close)="filterVisible = false"></app-meme-list-filters>
-<section *ngIf="(memes$ | async) as memes; else memesLoading" class="list-container">
-  <app-meme-card *ngFor="let meme of memes" [data]="meme"></app-meme-card>
-</section>
-<ng-template #memesLoading>
-  <div class="loading-spinner">
-    <mat-progress-spinner [color]="primary" [mode]="'indeterminate'"></mat-progress-spinner>
+<section *ngIf="(memes$ | async) as memes;" class="list-container">
+  <div class="list-container__height-wrapper">
+    <app-meme-card *ngFor="let meme of memes" [data]="meme" class="list-container__meme-card"></app-meme-card>
   </div>
-</ng-template>
+</section>
 <section class="new">
   <button mat-fab color="primary">
     <mat-icon>add</mat-icon>

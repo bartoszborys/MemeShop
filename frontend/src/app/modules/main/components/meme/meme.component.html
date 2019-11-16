@@ -1,1 +1,14 @@
-<p>meme works!</p>
+<section style="display: flex; flex: 1 1 auto;" *ngIf="(current$ | async) as current">
+  <article style="display: flex; flex: 1 1 auto;">
+    <img [src]="current.image" alt="The Pulpit Rock">
+    <article style="display: flex; flex-direction: column; flex: 1 1 auto; overflow: auto">
+      <header>Header</header>
+      <div *ngFor="let x of [1,1,1,1,1,1,1,1,1,1]">
+        <span *ngFor="let item of current | keyvalue;" style="display: flex;">
+          <b>{{item.key | titlecase}}: </b>
+          <span>{{item.value}}</span>
+        </span>
+      </div>
+    </article>
+  </article>
+</section>

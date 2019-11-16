@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MemesService } from './services/memes/memes.service';
 import { MemeCard } from './models/meme-card.model';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { MemesService } from '../../services/memes/memes.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-memes-list',
@@ -12,10 +13,13 @@ export class MemesListComponent implements OnInit {
   public memes$: Observable<MemeCard[]>;
   public filterVisible: boolean = false;
 
-  constructor(private service: MemesService) { }
+  constructor(
+    private service: MemesService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.memes$ = this.service.getMemesList();
+    this.memes$ = of(this.route.snapshot.data.memes);
   }
 
 }
