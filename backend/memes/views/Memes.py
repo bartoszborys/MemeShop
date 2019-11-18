@@ -17,6 +17,7 @@ class MemesView(GenericAPIView):
         dataFrom = step*pageSize
         dataTo = step*pageSize + pageSize
         sorting = request.GET.get('sorting',"-creation_date") 
+        #add also fitlering with priceFrom and priceTo
         memes = Meme.objects.all().order_by(sorting)[dataFrom:dataTo]
         serializer = MemesSerializer(memes, many=True)
         return JsonResponse(serializer.data, safe=False)
