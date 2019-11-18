@@ -5,7 +5,6 @@ from ..serializers.UserSerializer import UserSerializer
 from ..serializers.MemeAddSerializer import MemesAddSerializer
 from ..serializers.MemeAddSwaggerSerializer import MemeAddSwaggerSerializer
 from rest_framework.generics import GenericAPIView
-from rest_framework.views import APIView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
