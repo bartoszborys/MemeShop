@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MainLoadingBarService } from './services/main-loading-bar/main-loading-bar.service';
-import { Router, NavigationStart } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +14,7 @@ export class MainComponent implements OnInit {
   constructor(
     private service: MainLoadingBarService,
     private router: Router
-    ) { }
+  ) { }
 
   public async ngOnInit(): Promise<void> {
     this.mainLoadingBar$ = this.service.progressBar$;

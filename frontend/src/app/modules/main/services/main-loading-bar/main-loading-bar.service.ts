@@ -6,7 +6,8 @@ import { Subject, Observable } from 'rxjs';
 })
 export class MainLoadingBarService {
   private progressBar: Subject<boolean> = new Subject<boolean>();
-  public progressBar$: Observable<boolean> = this.progressBar.asObservable(); 
+  public progressBar$: Observable<boolean> = this.progressBar.asObservable();
+
   constructor() { }
 
   public activeProgressBar(): void {
