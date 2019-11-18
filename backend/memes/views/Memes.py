@@ -13,9 +13,15 @@ class MemesView(GenericAPIView):
     serializer_class = MemeAddSwaggerSerializer
 
     def get(self, request, *args, **kwargs):
-        memes = Meme.objects.all()
+        step = int(request.GET.get('step',0))
+        pageSize = int(request.GET.get('pageSize',10))
+        dataFrom = step*pageSize
+        dataTo = step*pageSize + pageSize
+        sorting = request.GET.get('sorting',"-creation_date") 
+        memes = Meme.objects.all().order_by(sorting)[dataFrom:dataTo]
         serializer = MemesSerializer(memes, many=True)
         return JsonResponse(serializer.data, safe=False)
+
 
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
