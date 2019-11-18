@@ -1,5 +1,41 @@
 :host
   display: flex
-  flex-direction: row
-  flex-wrap: wrap
+  flex-direction: column
+  flex: 1 1 auto
+  margin: auto
+  height: 100%
+  position: relative
   
+.list-container
+  width: 100%
+  min-height: 0
+  flex: 1 1 auto
+  margin: 0 auto
+  overflow: hidden auto
+
+.list-container__height-wrapper
+  display: flex
+  flex-wrap: wrap
+  max-width: 100%
+  margin: 0 auto
+  justify-content: space-around
+
+.list-container__loading-spinner
+  margin: 2em auto
+
+.new
+  top: auto !important
+  right: 40px !important
+  bottom: 20px !important
+  left: auto !important
+  position: fixed !important
+  z-index: 9999
+
+.filter
+  top: auto !important
+  right: 40px !important
+  margin-top: 20px !important
+  bottom: auto !important
+  left: auto !important
+  position: fixed !important
+  z-index: 9999

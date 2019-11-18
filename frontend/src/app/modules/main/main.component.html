@@ -19,6 +19,7 @@
     </mat-toolbar-row>
   </mat-toolbar>
 </nav>
+<mat-progress-bar [mode]="(mainLoadingBar$ | async) ? 'indeterminate' : 'determinate'"></mat-progress-bar>
 <main class="routing">
   <router-outlet></router-outlet>
 </main>
