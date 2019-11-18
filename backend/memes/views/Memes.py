@@ -5,7 +5,6 @@ from ..serializers.UserSerializer import UserSerializer
 from ..serializers.MemeAddSerializer import MemesAddSerializer
 from ..serializers.MemeAddSwaggerSerializer import MemeAddSwaggerSerializer
 from rest_framework.generics import GenericAPIView
-from rest_framework.views import APIView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
@@ -18,6 +17,7 @@ class MemesView(GenericAPIView):
         dataFrom = step*pageSize
         dataTo = step*pageSize + pageSize
         sorting = request.GET.get('sorting',"-creation_date") 
+        #add also fitlering with priceFrom and priceTo
         memes = Meme.objects.all().order_by(sorting)[dataFrom:dataTo]
         serializer = MemesSerializer(memes, many=True)
         return JsonResponse(serializer.data, safe=False)
