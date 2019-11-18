@@ -1,0 +1,16 @@
+<app-meme-list-filters *ngIf="filterVisible" (close)="filterVisible = false"></app-meme-list-filters>
+<section *ngIf="(memes$ | async) as memes;" class="list-container">
+  <div class="list-container__height-wrapper">
+    <app-meme-card *ngFor="let meme of memes" [data]="meme" class="list-container__meme-card"></app-meme-card>
+  </div>
+</section>
+<section class="new">
+  <button mat-fab color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+</section>
+<section *ngIf="!filterVisible" class="filter">
+  <button mat-fab color="primary" (click)="filterVisible = true">
+    <mat-icon>search</mat-icon>
+  </button>
+</section>
