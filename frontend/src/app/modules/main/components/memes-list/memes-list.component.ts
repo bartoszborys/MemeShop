@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { MemeCard } from './models/meme-card.model';
-import { Observable, of } from 'rxjs';
 import { MemesService } from '../../services/memes/memes.service';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-memes-list',
@@ -10,8 +10,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./memes-list.component.sass']
 })
 export class MemesListComponent implements OnInit {
-  public memes$: Observable<MemeCard[]>;
-  public filterVisible: boolean = false;
+  @ViewChild('infinityContainer', {static: false}) public infinityContainer: ElementRef;
+  public memes: MemeCard[];
+  public memesLoading: Observable<MemeCard[]>;
+  public visible: {filter: boolean, memesChunk: boolean} = {
+    filter: false,
+    memesChunk: false,
+  }
 
   constructor(
     private service: MemesService,
@@ -19,7 +24,23 @@ export class MemesListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.memes$ = of(this.route.snapshot.data.memes);
+    this.memes = this.route.snapshot.data.memes;
   }
 
+  async scroll(): Promise<void> {
+    const container: HTMLTableSectionElement = this.infinityContainer.nativeElement;
+    if (Math.ceil(container.offsetHeight + container.scrollTop) >= container.scrollHeight * 0.90) {
+      this.memesChunkLoad();
+    }
+  }
+
+  async memesChunkLoad(): Promise<void> {
+    if(this.visible.memesChunk){
+      return;
+    }
+
+    this.visible.memesChunk = true;
+    this.memes = this.memes.concat((await this.service.getMemesList().toPromise()).slice(0,10));
+    this.visible.memesChunk = false;
+  }
 }
