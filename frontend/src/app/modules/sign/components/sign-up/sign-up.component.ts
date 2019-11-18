@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SignServiceService } from '../../services/sign-service/sign-service.service';
+import { SignService } from '../../services/sign-service/sign-service.service';
 import { SignUpForm } from '../../models/sign-up-form.model';
 
 @Component({
@@ -17,7 +17,7 @@ export class SignUpComponent implements OnInit {
     password: ""
   }
 
-  constructor(private service: SignServiceService) { }
+  constructor(private service: SignService) { }
 
   ngOnInit() {
     

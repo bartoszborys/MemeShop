@@ -8,7 +8,7 @@ import { delay } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class SignServiceService {
+export class SignService {
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +22,6 @@ export class SignServiceService {
   }
 
   public signOut() {
-    localStorage.removeItem("auth_token");
     return of([true]).pipe(delay(2000));
   }
 

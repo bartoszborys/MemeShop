@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SignServiceService } from '../../services/sign-service/sign-service.service';
+import { SignService } from '../../services/sign-service/sign-service.service';
 import { SignInForm } from '../../models/sign-in-form.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +15,7 @@ export class SignInComponent implements OnInit {
     password: ""
   }
 
-  constructor(private service: SignServiceService) { }
+  constructor(private service: SignService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,6 +27,7 @@ export class SignInComponent implements OnInit {
       success => {
         console.log("sign in worked", success)
         localStorage.setItem("auth_token", success.token)
+        this.router.navigate(['/']);
       },
     )
   }
