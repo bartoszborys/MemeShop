@@ -23,9 +23,9 @@ export class SignUpComponent implements OnInit {
     
   }
 
-  async signUp() {
+  signUp() {
     console.log(this.personToSignUp);
-    const result = await this.service.signUp(this.personToSignUp);
+    const result = this.service.signUp(this.personToSignUp);
     result.subscribe(
       success => console.log("sign up worked")
     )
