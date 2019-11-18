@@ -13,7 +13,7 @@ export class MemesService {
   constructor() { }
 
   getMemesList(): Observable<MemeCard[]>{
-    return of(memesListMock).pipe( delay(2000) )
+    return of(memesListMock).pipe( delay(200) )
   }
 
   getMeme(id: number): Observable<MemeDetails>{
@@ -27,6 +27,6 @@ export class MemesService {
       }
     })[0];
 
-    return of(mappedMeme).pipe( delay(2000));
+    return of(mappedMeme).pipe( delay(200));
   }
 }
