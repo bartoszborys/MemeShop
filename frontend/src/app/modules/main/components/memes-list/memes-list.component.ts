@@ -27,9 +27,16 @@ export class MemesListComponent implements OnInit {
     this.memes = this.route.snapshot.data.memes;
   }
 
-  async scroll(): Promise<void> {
+  scroll(): void {
     const container: HTMLTableSectionElement = this.infinityContainer.nativeElement;
     if (Math.ceil(container.offsetHeight + container.scrollTop) >= container.scrollHeight * 0.90) {
+      this.memesChunkLoad();
+    }
+  }
+
+  memesFill(): void {
+    const container: HTMLTableSectionElement = this.infinityContainer.nativeElement;
+    if (container.offsetHeight + container.scrollTop == container.scrollHeight) {
       this.memesChunkLoad();
     }
   }

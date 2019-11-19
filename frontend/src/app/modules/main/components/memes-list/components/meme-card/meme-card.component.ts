@@ -17,7 +17,7 @@ export class MemeCardComponent implements OnInit {
   }
 
   @HostListener('click')
-  public onCardClick(){
+  public onCardClick() {
     this.router.navigate([`memes/${this.data.id}`])
   }
 }

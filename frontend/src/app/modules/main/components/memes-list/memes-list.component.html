@@ -1,5 +1,5 @@
 <app-meme-list-filters *ngIf="visible.filter" (close)="visible.filter = false"></app-meme-list-filters>
-<section #infinityContainer *ngIf="memes" class="list-container" (scroll)="scroll()" (resize)="scroll()">
+<section #infinityContainer *ngIf="memes" class="list-container" (wheel)="scroll()" (mousemove)="memesFill()">
   <div class="list-container__height-wrapper">
     <app-meme-card *ngFor="let meme of memes" [data]="meme"></app-meme-card>
   </div>
