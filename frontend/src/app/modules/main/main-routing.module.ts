@@ -6,6 +6,8 @@ import { LatestMemesComponent } from './components/latest-memes/latest-memes.com
 import { MemeComponent } from './components/meme/meme.component';
 import { MemeCartComponent } from './components/meme-cart/meme-cart.component';
 import { AddMemeComponent } from './components/add-meme/add-meme.component';
+import { MemesListResolver } from './components/memes-list/resolvers/memes-list-resolver';
+import { MemeResolver } from './components/meme/resolvers/meme-resolver';
 
 const routes: Routes = [
   {
@@ -18,7 +20,8 @@ const routes: Routes = [
       },
       {
         path: "memes",
-        component: MemesListComponent
+        component: MemesListComponent,
+        resolve: {memes: MemesListResolver}
       },
       {
         path: "latest",
@@ -26,7 +29,8 @@ const routes: Routes = [
       },
       {
         path: "memes/:id",
-        component: MemeComponent
+        component: MemeComponent,
+        resolve: {current: MemeResolver}
       },
       {
         path: "add",

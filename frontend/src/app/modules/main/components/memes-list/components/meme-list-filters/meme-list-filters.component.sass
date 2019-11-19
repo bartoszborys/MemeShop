@@ -3,7 +3,7 @@
   padding: 0 1em
   margin-top: .5em
   border-bottom: solid 1px gray
-  animation: filterIn 0.25s ease-out forwards
+  animation: 0.45s ease-out forwards
 
 .filter
   margin: 0 1em
@@ -22,3 +22,11 @@
   100%
     transform: scaleY(1)
     opacity: 1
+
+@keyframes filterOut
+  0%
+    transform: scaleY(1)
+    opacity: 1
+  100%
+    transform: scaleY(0)
+    opacity: 0.1

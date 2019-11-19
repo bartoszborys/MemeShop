@@ -12,10 +12,16 @@ import { FormsModule } from '@angular/forms';
 import { MemeListFiltersComponent } from './components/memes-list/components/meme-list-filters/meme-list-filters.component';
 import { MemesCardsListComponent } from './components/memes-list/components/memes-cards-list/memes-cards-list.component';
 import { MemeCardComponent } from './components/memes-list/components/meme-card/meme-card.component';
+import { MemesListResolver } from './components/memes-list/resolvers/memes-list-resolver';
+import { MemeResolver } from './components/meme/resolvers/meme-resolver';
 
 
 
 @NgModule({
+  providers: [
+    MemesListResolver,
+    MemeResolver
+  ],
   declarations: [
     MainComponent,
     MemesListComponent, 

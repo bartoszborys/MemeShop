@@ -1,19 +1,17 @@
-<app-meme-list-filters *ngIf="filterVisible" (close)="filterVisible = false"></app-meme-list-filters>
-<section *ngIf="(memes$ | async) as memes; else memesLoading" class="list-container">
-  <app-meme-card *ngFor="let meme of memes" [data]="meme"></app-meme-card>
-</section>
-<ng-template #memesLoading>
-  <div class="loading-spinner">
-    <mat-progress-spinner [color]="primary" [mode]="'indeterminate'"></mat-progress-spinner>
+<app-meme-list-filters *ngIf="visible.filter" (close)="visible.filter = false"></app-meme-list-filters>
+<section #infinityContainer *ngIf="memes" class="list-container" (wheel)="scroll()" (mousemove)="memesFill()">
+  <div class="list-container__height-wrapper">
+    <app-meme-card *ngFor="let meme of memes" [data]="meme"></app-meme-card>
   </div>
-</ng-template>
+  <mat-progress-spinner class="list-container__loading-spinner" *ngIf="visible.memesChunk" [color]="'warn'" [mode]="'indeterminate'"></mat-progress-spinner>
+</section>
 <section class="new">
-  <button mat-fab color="primary">
+  <button mat-fab color="primary" (click)="test()">
     <mat-icon>add</mat-icon>
   </button>
 </section>
-<section *ngIf="!filterVisible" class="filter">
-  <button mat-fab color="primary" (click)="filterVisible = true">
+<section *ngIf="!visible.filter" class="filter">
+  <button mat-fab color="primary" (click)="visible.filter = true">
     <mat-icon>search</mat-icon>
   </button>
 </section>

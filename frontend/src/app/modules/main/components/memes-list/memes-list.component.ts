@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MemesService } from './services/memes/memes.service';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { MemeCard } from './models/meme-card.model';
+import { MemesService } from '../../services/memes/memes.service';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,13 +10,44 @@ import { Observable } from 'rxjs';
   styleUrls: ['./memes-list.component.sass']
 })
 export class MemesListComponent implements OnInit {
-  public memes$: Observable<MemeCard[]>;
-  public filterVisible: boolean = false;
-
-  constructor(private service: MemesService) { }
-
-  ngOnInit(): void {
-    this.memes$ = this.service.getMemesList();
+  @ViewChild('infinityContainer', {static: false}) public infinityContainer: ElementRef;
+  public memes: MemeCard[];
+  public memesLoading: Observable<MemeCard[]>;
+  public visible: {filter: boolean, memesChunk: boolean} = {
+    filter: false,
+    memesChunk: false,
   }
 
+  constructor(
+    private service: MemesService,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit(): void {
+    this.memes = this.route.snapshot.data.memes;
+  }
+
+  scroll(): void {
+    const container: HTMLTableSectionElement = this.infinityContainer.nativeElement;
+    if (Math.ceil(container.offsetHeight + container.scrollTop) >= container.scrollHeight * 0.90) {
+      this.memesChunkLoad();
+    }
+  }
+
+  memesFill(): void {
+    const container: HTMLTableSectionElement = this.infinityContainer.nativeElement;
+    if (container.offsetHeight + container.scrollTop == container.scrollHeight) {
+      this.memesChunkLoad();
+    }
+  }
+
+  async memesChunkLoad(): Promise<void> {
+    if(this.visible.memesChunk){
+      return;
+    }
+
+    this.visible.memesChunk = true;
+    this.memes = this.memes.concat((await this.service.getMemesList().toPromise()).slice(0,10));
+    this.visible.memesChunk = false;
+  }
 }

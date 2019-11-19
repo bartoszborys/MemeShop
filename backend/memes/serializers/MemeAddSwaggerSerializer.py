@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from ..models.Meme import Meme
 
-class MemesSerializer(serializers.ModelSerializer):
+class MemeAddSwaggerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Meme
-        fields = ("url", "id",  "price")
+        fields = ("url", "price", "quantity")

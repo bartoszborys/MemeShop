@@ -15,10 +15,12 @@
         <button routerLink="/memes" mat-menu-item>Wszystkie</button>
       </mat-menu>
       <span class="navbar__space-filler"></span>
-      <button routerLink="/sign" mat-raised-button color="primary">Login</button>
+      <button *ngIf="!localStorage.getItem('auth_token')" routerLink="/sign" mat-raised-button color="primary">Login</button>
+      <button *ngIf="localStorage.getItem('auth_token')" (click)="signOut()" mat-raised-button color="primary">Log out</button>
     </mat-toolbar-row>
   </mat-toolbar>
 </nav>
+<mat-progress-bar [mode]="(mainLoadingBar$ | async) ? 'indeterminate' : 'determinate'"></mat-progress-bar>
 <main class="routing">
   <router-outlet></router-outlet>
 </main>

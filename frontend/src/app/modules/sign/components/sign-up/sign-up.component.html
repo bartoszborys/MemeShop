@@ -1,1 +1,14 @@
-<p>sign-up works!</p>
+<p (mouseover)="signUp()">{{personToSignUp.email}}!</p>
+<div class="signUpForm">
+    <label for="username">Username</label>
+    <input type="text" required [(ngModel)]="personToSignUp.username" id="username">
+    <label for="first_name">First name</label>
+    <input type="text" required [(ngModel)]="personToSignUp.first_name" id="first_name">
+    <label for="last_name">Last name</label>
+    <input type="text" required [(ngModel)]="personToSignUp.last_name" id="last_name">
+    <label for="email">Email</label>
+    <input type="text" required [(ngModel)]="personToSignUp.email" id="email">
+    <label for="password">Password</label>
+    <input type="text" required [(ngModel)]="personToSignUp.password" id="password">
+    <input type="button" value="Sign up" (click)="signUp()">
+</div>
