@@ -1,6 +1,6 @@
 <section style="display: flex; flex: 1 1 auto;" *ngIf="(current$ | async) as current">
   <article style="display: flex; flex: 1 1 auto;">
-    <img [src]="current.image" alt="The Pulpit Rock">
+    <img [src]="current.url" alt="The Pulpit Rock">
     <article style="display: flex; flex-direction: column; flex: 1 1 auto; overflow: auto">
       <header>Header</header>
       <div *ngFor="let x of [1,1,1,1,1,1,1,1,1,1]">
