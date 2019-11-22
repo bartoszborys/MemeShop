@@ -11,12 +11,12 @@ import { of } from 'rxjs';
   styleUrls: ['./meme.component.sass']
 })
 export class MemeComponent implements OnInit {
-  public current$: Observable<MemeDetails>;
+  public current: MemeDetails;
 
   constructor(private route: ActivatedRoute, private service: MemesService) { }
 
   async ngOnInit(): Promise<void> {
-    this.current$ = of(this.route.snapshot.data.current);
+    this.current = this.route.snapshot.data.current;
   }
 
 }
