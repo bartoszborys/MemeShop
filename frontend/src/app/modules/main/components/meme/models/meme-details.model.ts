@@ -1,7 +1,10 @@
 export interface MemeDetails {
   id: number;
+  url: string;
+  price: number;
   name: string;
-  author: string;
-  useCount: number;
-  image: string;
+  quantity: number;
+  author: {id: number; first_name: string; last_name: string;};
+  creation_date: string;
+  visit_count: number;
 }
