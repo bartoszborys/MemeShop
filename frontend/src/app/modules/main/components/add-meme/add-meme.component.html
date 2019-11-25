@@ -1,1 +1,24 @@
-<p>add-meme works!</p>
+<fieldset>
+  <legend>Dodaj mema</legend>
+  <form class="new-meme-form">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Tytuł" [(ngModel)]="newMeme.title" name="title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Cena" [(ngModel)]="newMeme.price" name="price">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Liczba osób" [(ngModel)]="newMeme.quantity" name="quantity"/>
+    </mat-form-field>
+
+    <input #memeInput type="file" (input)="addImage(memeInput)" placeholder="Mem" name="mem"/>
+    
+    <button (click)="send()">Send</button>
+  </form>
+</fieldset>
+<figure style="display: flex; flex-direction: column; flex: 1 1 auto; justify-content: center;">
+  <figcaption>Podgląd</figcaption>
+  <img [style.backgroundImage]="backgroundImage" class="image" style="flex: 1 1 auto;"/>
+</figure>
