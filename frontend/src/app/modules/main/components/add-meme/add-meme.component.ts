@@ -10,7 +10,7 @@ import { MemesService } from '../../services/memes/memes.service';
 })
 export class AddMemeComponent implements OnInit {
   public newMeme: NewMeme = {
-    title: "",
+    picture_title: "",
     blob: "",
     price: 0,
     quantity: 0,
@@ -32,7 +32,7 @@ export class AddMemeComponent implements OnInit {
   }
   
   public send() {
-    this.api.createMeme(this.newMeme).subscribe({
+    this.api.createMeme(Object.assign(this.newMeme, {name: "cos"})).subscribe({
       next: data => console.log(data),
       error: error => console.log(error)
    });

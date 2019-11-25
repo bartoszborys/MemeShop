@@ -12,6 +12,7 @@ class MemesView(GenericAPIView):
     serializer_class = MemeAddSwaggerSerializer
 
     def get(self, request, *args, **kwargs):
+        #return meme as blob!
         step = int(request.GET.get('step',0))
         pageSize = int(request.GET.get('pageSize',10))
         dataFrom = step*pageSize
@@ -29,7 +30,6 @@ class MemesView(GenericAPIView):
         userId = userSerializer.data['id']
         tmpSerializer = {'author_id':userId}
         tmpSerializer.update(request.data)
-        import pdb; pdb.set_trace()
         memeAddSerializer = MemesAddSerializer(data=tmpSerializer)
         if memeAddSerializer.is_valid():
             memeAddSerializer.save()

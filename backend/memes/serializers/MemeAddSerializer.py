@@ -8,7 +8,6 @@ class MemesAddSerializer(serializers.ModelSerializer):
     author_id = serializers.IntegerField(source='author.id')
 
     def create(self, validated_data):
-        import pdb; pdb.set_trace()
         # each person can only have one picture of specific name!!!! TODO
         title=validated_data['picture_title']
         author_id = validated_data['author']['id']

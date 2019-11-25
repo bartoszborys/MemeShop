@@ -10,6 +10,7 @@ class MemeDetailsView(GenericAPIView):
 
     def get(self, request, meme_id, *args, **kwargs):
         try:
+            #return meme as blob!
             meme = Meme.objects.get(id=meme_id)
             meme.visits_count = meme.visits_count + 1
             meme.save()

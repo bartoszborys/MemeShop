@@ -20,7 +20,7 @@ export class MemesService {
     return this.http.get<MemeDetails>(`http://localhost:8000/api/memes/${id}`);
   }
 
-  createMeme(newMeme: NewMeme): Observable<NewMeme> {
+  createMeme(newMeme: any): Observable<NewMeme> {
     return this.http.post<NewMeme>(`http://localhost:8000/api/memes/`, newMeme, {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
