@@ -10,5 +10,6 @@ class Meme(models.Model):
     creation_date = models.DateTimeField(default=now)
     visits_count = models.IntegerField(default=0)
     name = models.CharField(max_length=255)
+    picture_title = models.CharField(max_length=64)
     class Meta:
         db_table = 'memes'

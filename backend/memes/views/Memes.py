@@ -29,6 +29,7 @@ class MemesView(GenericAPIView):
         userId = userSerializer.data['id']
         tmpSerializer = {'author_id':userId}
         tmpSerializer.update(request.data)
+        import pdb; pdb.set_trace()
         memeAddSerializer = MemesAddSerializer(data=tmpSerializer)
         if memeAddSerializer.is_valid():
             memeAddSerializer.save()
