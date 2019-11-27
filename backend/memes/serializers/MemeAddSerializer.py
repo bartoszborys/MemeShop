@@ -29,4 +29,4 @@ class MemesAddSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MemeAdd
-        fields = ("blob", "id", "author_id", "price", "quantity", "name", "picture_title")
+        fields = ("blob", "id", "author_id", "price", "quantity", "name", "extension")

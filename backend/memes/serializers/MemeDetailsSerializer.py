@@ -8,4 +8,4 @@ class MemeDetailsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Meme
-        fields = ("url", "id",  "price", "name", "quantity", "author", "creation_date", "visits_count", "picture_title")
+        fields = ("id",  "price", "name", "quantity", "author", "creation_date", "visits_count",)
