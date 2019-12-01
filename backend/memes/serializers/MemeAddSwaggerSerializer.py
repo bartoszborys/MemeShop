@@ -5,4 +5,4 @@ class MemeAddSwaggerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MemeAdd
-        fields = ("blob", "picture_title", "price", "quantity")
+        fields = ("blob", "name", "price", "quantity", "extension")

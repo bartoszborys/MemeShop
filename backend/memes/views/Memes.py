@@ -7,6 +7,7 @@ from ..serializers.MemeAddSwaggerSerializer import MemeAddSwaggerSerializer
 from rest_framework.generics import GenericAPIView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from exceptions.MemeNameAlreadyExsitsException import MemeNameAlreadyExsitsException
 
 class MemesView(GenericAPIView):
     serializer_class = MemeAddSwaggerSerializer
@@ -30,9 +31,12 @@ class MemesView(GenericAPIView):
         userId = userSerializer.data['id']
         tmpSerializer = {'author_id':userId}
         tmpSerializer.update(request.data)
-        memeAddSerializer = MemesAddSerializer(data=tmpSerializer)
-        if memeAddSerializer.is_valid():
-            memeAddSerializer.save()
-        else:
-            return JsonResponse(memeAddSerializer.errors, status=500) 
-        return HttpResponse(status=201)       
+        try:
+            memeAddSerializer = MemesAddSerializer(data=tmpSerializer)
+            if memeAddSerializer.is_valid():
+                memeAddSerializer.save()
+                return HttpResponse(status=201)
+            else:
+                return JsonResponse(memeAddSerializer.errors, status=500) 
+        except:
+            return HttpResponse(MemeNameAlreadyExsitsException(), status=500)
