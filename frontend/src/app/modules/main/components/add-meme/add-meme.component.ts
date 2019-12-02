@@ -9,18 +9,17 @@ import { MemesService } from '../../services/memes/memes.service';
   styleUrls: ['./add-meme.component.sass']
 })
 export class AddMemeComponent implements OnInit {
+  public backgroundImage: SafeStyle;
   public newMeme: NewMeme = {
     title: "",
     blob: "",
     price: 0,
     quantity: 0,
   };
-  public backgroundImage: SafeStyle;
 
   constructor(private api: MemesService, private sanitizer: DomSanitizer) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public addImage(fileInput: HTMLInputElement): void {
     const reader = new FileReader();
@@ -31,7 +30,7 @@ export class AddMemeComponent implements OnInit {
     reader.readAsDataURL(fileInput.files[0]);
   }
   
-  public send() {
+  public send(): void {
     this.api.createMeme(this.newMeme).subscribe({
       next: data => console.log(data),
       error: error => console.log(error)
