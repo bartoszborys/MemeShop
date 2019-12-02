@@ -11,7 +11,7 @@ import { MemesService } from '../../services/memes/memes.service';
 export class AddMemeComponent implements OnInit {
   public backgroundImage: SafeStyle;
   public newMeme: NewMeme = {
-    title: "",
+    picture_title: "",
     blob: "",
     price: 0,
     quantity: 0,
@@ -30,8 +30,13 @@ export class AddMemeComponent implements OnInit {
     reader.readAsDataURL(fileInput.files[0]);
   }
   
+<<<<<<< HEAD
   public send(): void {
     this.api.createMeme(this.newMeme).subscribe({
+=======
+  public send() {
+    this.api.createMeme(Object.assign(this.newMeme, {name: "cos"})).subscribe({
+>>>>>>> develop
       next: data => console.log(data),
       error: error => console.log(error)
    });

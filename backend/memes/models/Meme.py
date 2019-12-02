@@ -9,6 +9,7 @@ class Meme(models.Model):
     quantity = models.IntegerField()
     creation_date = models.DateTimeField(default=now)
     visits_count = models.IntegerField(default=0)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=128)
+    extension = models.CharField(max_length=16)
     class Meta:
         db_table = 'memes'
