@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.timezone import now
 
 class Meme(models.Model):
-    url = models.CharField(max_length=255)
+    url = models.ImageField()
     price = models.FloatField()
     author = models.ForeignKey(User, on_delete = models.CASCADE)
     quantity = models.IntegerField()
