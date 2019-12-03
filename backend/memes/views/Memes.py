@@ -9,6 +9,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from exceptions.MemeNameAlreadyExsitsException import MemeNameAlreadyExsitsException
 from django.db.models import Q
+from django.core.exceptions import ValidationError
 
 
 class MemesView(GenericAPIView):
@@ -38,7 +39,7 @@ class MemesView(GenericAPIView):
         if memeAddSerializer.is_valid():
             try:
                 memeAddSerializer.save()
-            except:
+            except ValidationError:
                 return HttpResponse(MemeNameAlreadyExsitsException(), status=500)
             return HttpResponse(status=201)
         else:
