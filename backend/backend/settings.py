@@ -16,7 +16,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_URL = '/'
 MEDIA_ROOT = (
-    os.path.join(BASE_DIR, 'pictures')
+    # os.path.join(BASE_DIR, 'pictures')
+    BASE_DIR
 )
 
 # Quick-start development settings - unsuitable for production
