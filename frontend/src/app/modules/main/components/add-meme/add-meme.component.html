@@ -5,9 +5,15 @@
       <mat-form-field>
         <input matInput type="text" placeholder="Tytuł" [(ngModel)]="newMeme.picture_title" name="title">
       </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Ilość" [(ngModel)]="newMeme.quantity" name="quantity">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Cena" [(ngModel)]="newMeme.price" name="price">
+      </mat-form-field>
       <input #memeInput type="file" (input)="addImage(memeInput)" placeholder="Mem" name="mem"/>
-      <button (click)="send()" mat-raised-button color="primary">Wystaw</button>
-      <button mat-raised-button color="warn">Wyczyść</button>
+      <button class="form-button" (click)="send()" mat-raised-button color="primary">Wystaw</button>
+      <button class="form-button" mat-raised-button color="warn">Wyczyść</button>
     </form>
   </fieldset>
 </section>

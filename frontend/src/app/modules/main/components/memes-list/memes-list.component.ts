@@ -3,6 +3,7 @@ import { MemeCard } from './models/meme-card.model';
 import { MemesService } from '../../services/memes/memes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-memes-list',
@@ -25,6 +26,7 @@ export class MemesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.memes = this.route.snapshot.data.memes;
+    this.memes.forEach( item => item.url = environment.api_url + item.url.replace(/\/pictures/g,"") )
   }
 
   scroll(): void {
