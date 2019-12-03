@@ -1,26 +1,10 @@
-<<<<<<< HEAD
 <section>
-  <fieldset class="form-fieldset">
+  <fieldset>
     <legend>Dodaj mema</legend>
-    <form class="form-fieldset__new-meme-form">
+    <form class="new-meme-form">
       <mat-form-field>
-        <input matInput type="text" placeholder="Tytuł" [(ngModel)]="newMeme.title" name="title">
+        <input matInput type="text" placeholder="Tytuł" [(ngModel)]="newMeme.picture_title" name="title">
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="number" placeholder="Cena" [(ngModel)]="newMeme.price" name="price">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="number" placeholder="Liczba osób" [(ngModel)]="newMeme.quantity" name="quantity"/>
-      </mat-form-field>
-=======
-<fieldset>
-  <legend>Dodaj mema</legend>
-  <form class="new-meme-form">
-    <mat-form-field>
-      <input matInput type="text" placeholder="Tytuł" [(ngModel)]="newMeme.picture_title" name="title">
-    </mat-form-field>
->>>>>>> develop
-
       <input #memeInput type="file" (input)="addImage(memeInput)" placeholder="Mem" name="mem"/>
       <button (click)="send()" mat-raised-button color="primary">Wystaw</button>
       <button mat-raised-button color="warn">Wyczyść</button>

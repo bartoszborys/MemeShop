@@ -30,13 +30,8 @@ export class AddMemeComponent implements OnInit {
     reader.readAsDataURL(fileInput.files[0]);
   }
   
-<<<<<<< HEAD
-  public send(): void {
-    this.api.createMeme(this.newMeme).subscribe({
-=======
   public send() {
-    this.api.createMeme(Object.assign(this.newMeme, {name: "cos"})).subscribe({
->>>>>>> develop
+    this.api.createMeme(Object.assign(this.newMeme, {name: "witam", extension: "jpg"})).subscribe({
       next: data => console.log(data),
       error: error => console.log(error)
    });
