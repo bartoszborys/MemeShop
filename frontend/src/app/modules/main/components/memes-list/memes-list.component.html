@@ -6,7 +6,7 @@
   <mat-progress-spinner class="list-container__loading-spinner" *ngIf="visible.memesChunk" [color]="'warn'" [mode]="'indeterminate'"></mat-progress-spinner>
 </section>
 <section class="new">
-  <button mat-fab color="primary">
+  <button [routerLink]="['/add']" mat-fab color="primary">
     <mat-icon>add</mat-icon>
   </button>
 </section>

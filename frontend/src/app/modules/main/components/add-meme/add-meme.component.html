@@ -1,24 +1,23 @@
-<fieldset>
-  <legend>Dodaj mema</legend>
-  <form class="new-meme-form">
-    <mat-form-field>
-      <input matInput type="text" placeholder="Tytuł" [(ngModel)]="newMeme.picture_title" name="title">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput type="number" placeholder="Cena" [(ngModel)]="newMeme.price" name="price">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput type="number" placeholder="Liczba osób" [(ngModel)]="newMeme.quantity" name="quantity"/>
-    </mat-form-field>
-
-    <input #memeInput type="file" (input)="addImage(memeInput)" placeholder="Mem" name="mem"/>
-    
-    <button (click)="send()">Send</button>
-  </form>
-</fieldset>
+<section>
+  <fieldset>
+    <legend>Dodaj mema</legend>
+    <form class="new-meme-form">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Tytuł" [(ngModel)]="newMeme.picture_title" name="title">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Ilość" [(ngModel)]="newMeme.quantity" name="quantity">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Cena" [(ngModel)]="newMeme.price" name="price">
+      </mat-form-field>
+      <input #memeInput type="file" (input)="addImage(memeInput)" placeholder="Mem" name="mem"/>
+      <button class="form-button" (click)="send()" mat-raised-button color="primary">Wystaw</button>
+      <button class="form-button" mat-raised-button color="warn">Wyczyść</button>
+    </form>
+  </fieldset>
+</section>
 <figure style="display: flex; flex-direction: column; flex: 1 1 auto; justify-content: center;">
-  <figcaption>Podgląd</figcaption>
+    <figcaption>Podgląd</figcaption>
   <img [style.backgroundImage]="backgroundImage" class="image" style="flex: 1 1 auto;"/>
 </figure>

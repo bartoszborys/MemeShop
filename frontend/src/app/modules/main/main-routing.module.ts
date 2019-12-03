@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { MainComponent } from './main.component';
-import { MemesListComponent } from './components/memes-list/memes-list.component';
-import { LatestMemesComponent } from './components/latest-memes/latest-memes.component';
-import { MemeComponent } from './components/meme/meme.component';
-import { MemeCartComponent } from './components/meme-cart/meme-cart.component';
+import { RouterModule, Routes } from '@angular/router';
 import { AddMemeComponent } from './components/add-meme/add-meme.component';
-import { MemesListResolver } from './components/memes-list/resolvers/memes-list-resolver';
+import { MemeCartComponent } from './components/meme-cart/meme-cart.component';
+import { MemeComponent } from './components/meme/meme.component';
 import { MemeResolver } from './components/meme/resolvers/meme-resolver';
+import { MemesListComponent } from './components/memes-list/memes-list.component';
+import { MemesListResolver } from './components/memes-list/resolvers/memes-list-resolver';
+import { MainComponent } from './main.component';
 
 const routes: Routes = [
   {
@@ -25,7 +24,7 @@ const routes: Routes = [
       },
       {
         path: "latest",
-        component: LatestMemesComponent
+        component: MemesListComponent,
       },
       {
         path: "memes/:id",

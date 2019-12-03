@@ -1,5 +1,6 @@
 export interface NewMeme {
-  picture_title: string;
+  name: string;
+  extension: string;
   blob: string | ArrayBuffer;
   price: number;
   quantity: number;

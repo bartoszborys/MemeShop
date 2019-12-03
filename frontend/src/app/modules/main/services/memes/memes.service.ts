@@ -23,7 +23,7 @@ export class MemesService {
   createMeme(newMeme: any): Observable<NewMeme> {
     return this.http.post<NewMeme>(`http://localhost:8000/api/memes/`, newMeme, {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
         'Authorization': `bearer ${localStorage.getItem('auth_token')}`,
       })
     })
