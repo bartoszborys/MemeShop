@@ -18,18 +18,18 @@ const routes: Routes = [
         redirectTo: "latest"
       },
       {
-        path: "memes",
+        path: "latest",
         component: MemesListComponent,
         resolve: {memes: MemesListResolver}
       },
       {
-        path: "latest",
+        path: "popular",
         component: MemesListComponent,
       },
       {
         path: "memes/:id",
         component: MemeComponent,
-        resolve: {current: MemeResolver}
+        resolve: {current: MemeResolver},
       },
       {
         path: "add",

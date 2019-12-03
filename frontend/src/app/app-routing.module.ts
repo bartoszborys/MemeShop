@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/sign/sign.module').then(mod => mod.SignModule),
   },
   {
-    path: 'users',
+    path: 'user',
     loadChildren: () => import('./modules/user/user.module').then(mod => mod.UserModule),
   },
   {
