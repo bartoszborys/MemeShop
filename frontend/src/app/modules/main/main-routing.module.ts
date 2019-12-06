@@ -27,6 +27,10 @@ const routes: Routes = [
         component: MemesListComponent,
       },
       {
+        path: "my-memes",
+        component: MemesListComponent,
+      },
+      {
         path: "memes/:id",
         component: MemeComponent,
         resolve: {current: MemeResolver},
