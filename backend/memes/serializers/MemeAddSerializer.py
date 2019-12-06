@@ -2,6 +2,7 @@ from rest_framework import serializers
 from ..models.Meme import Meme
 from ..models.MemeAdd import MemeAdd 
 from django.http import HttpResponse
+import uuid
 
 import base64, os
 from django.core.exceptions import ValidationError
@@ -27,7 +28,8 @@ class MemesAddSerializer(serializers.ModelSerializer):
             os.mkdir("pictures")
         if not os.path.exists("pictures/" + str(author_id)):
             os.mkdir("pictures/" + str(author_id))
-        pic_url = "pictures/" + str(author_id) + "/" + name + "." + extension
+        random_name = str(uuid.uuid4())
+        pic_url = "pictures/" + str(author_id) + "/" + random_name + "." + extension
         with open(pic_url, "wb") as imageOutput:
             png_recovered = base64.b64decode(blobString.encode("utf-8"))
             imageOutput.write(png_recovered)
