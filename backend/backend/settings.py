@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'authorization',
     'rest_framework_swagger',
-    'memes'
+    'memes',
+    'orders'
 ]
 
 
