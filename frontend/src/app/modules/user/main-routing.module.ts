@@ -6,7 +6,7 @@ import { UserSettingsComponent } from './components/user-settings/user-settings.
 
 const routes: Routes = [
   {
-    path: ":id",
+    path: "",
     component: UserComponent,
     children: [
       {

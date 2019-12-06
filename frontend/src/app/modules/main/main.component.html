@@ -11,8 +11,8 @@
       </div>
       <mat-menu #memes="matMenu">
         <button routerLink="/latest" mat-menu-item>Najnowsze</button>
-        <button routerLink="/" mat-menu-item>Popularne</button>
-        <button routerLink="/memes" mat-menu-item>Wszystkie</button>
+        <button routerLink="/popular" mat-menu-item>Popularne</button>
+        <button routerLink="/my-memes" mat-menu-item>Moje memy</button>
       </mat-menu>
       <span class="navbar__space-filler"></span>
       <button *ngIf="!localStorage.getItem('auth_token')" routerLink="/sign" mat-raised-button color="primary">Login</button>

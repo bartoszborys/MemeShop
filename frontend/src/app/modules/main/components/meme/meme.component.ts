@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { MemeDetails } from './models/meme-details.model';
 import { of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-meme',
@@ -11,6 +12,7 @@ import { of } from 'rxjs';
   styleUrls: ['./meme.component.sass']
 })
 export class MemeComponent implements OnInit {
+  public api_url: string = environment.api_url;
   public current: MemeDetails;
 
   constructor(private route: ActivatedRoute, private service: MemesService) { }

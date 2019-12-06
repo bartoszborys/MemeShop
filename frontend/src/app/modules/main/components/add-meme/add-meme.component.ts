@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { NewMeme } from './models/new-meme.model';
 import { MemesService } from '../../services/memes/memes.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-meme',
@@ -18,7 +20,12 @@ export class AddMemeComponent implements OnInit {
     quantity: 0,
   };
 
-  constructor(private api: MemesService, private sanitizer: DomSanitizer) { }
+  constructor(
+    private api: MemesService, 
+    private sanitizer: DomSanitizer,
+    private router: Router,
+    private snackBar: MatSnackBar,
+  ) { }
 
   ngOnInit() { }
 
@@ -34,8 +41,8 @@ export class AddMemeComponent implements OnInit {
   
   public send() {
     this.api.createMeme(this.newMeme).subscribe({
-      next: data => console.log(data),
-      error: error => console.log(error)
+      next: data => this.router.navigate(['/my-memes']),
+      error: data => this.snackBar.open('Mem nie mógł zostać dodany', 'X', {duration: 5000}),
    });
   }
 }
