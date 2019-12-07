@@ -1,8 +1,9 @@
 <section style="display: flex; flex: 1 1 auto;" *ngIf="current">
   <article style="display: flex; flex: 1 1 auto;">
-    <img [src]="api_url + current.url" style="object-fit: contain;" alt="The Pulpit Rock">
+    <img [src]="current.url | apiImage" style="object-fit: contain;" alt="The Pulpit Rock">
     <article style="display: flex; flex-direction: column; flex: 1 1 auto; overflow: auto">
       <header>Header</header>
+      <button (click)="addToBasket()">Add to basket</button>
       <div *ngFor="let x of [1,1,1,1,1,1,1,1,1,1]">
         <span *ngFor="let item of current | keyvalue;" style="display: flex;">
           <b>{{item.key | titlecase}}: </b>

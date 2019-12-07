@@ -1,3 +1,5 @@
 python .\backend\manage.py migrate 
-start python .\backend\manage.py runserver
+cd .\backend
+start python .\manage.py runserver
+cd ..
 npm --prefix ./frontend start

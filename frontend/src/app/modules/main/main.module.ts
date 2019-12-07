@@ -13,12 +13,15 @@ import { MemesCardsListComponent } from './components/memes-list/components/meme
 import { MemeCardComponent } from './components/memes-list/components/meme-card/meme-card.component';
 import { MemesListResolver } from './components/memes-list/resolvers/memes-list-resolver';
 import { MemeResolver } from './components/meme/resolvers/meme-resolver';
+import { MemeCartResolver } from './components/meme-cart/resolver/meme-cart.resolver';
+import { ApiImagePipe } from './pipes/ApiImage/api-image.pipe';
 
 
 
 @NgModule({
   providers: [
     MemesListResolver,
+    MemeCartResolver,
     MemeResolver
   ],
   declarations: [
@@ -29,7 +32,8 @@ import { MemeResolver } from './components/meme/resolvers/meme-resolver';
     AddMemeComponent, 
     MemeListFiltersComponent, 
     MemesCardsListComponent, 
-    MemeCardComponent,
+    MemeCardComponent, 
+    ApiImagePipe, 
   ],
   imports: [
     CommonModule,
