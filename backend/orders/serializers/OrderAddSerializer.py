@@ -19,7 +19,6 @@ class OrderAddSerializer(serializers.ModelSerializer):
     def isEnoughQuantity(self, meme, quantityToBuy):
         leftMemes = meme.quantity - meme.bought
         return quantityToBuy <= leftMemes
-        
 
     def create(self, validated_data):
         meme_id = validated_data['meme']['id']
