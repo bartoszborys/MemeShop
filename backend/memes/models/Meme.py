@@ -9,7 +9,7 @@ class Meme(models.Model):
     price = models.FloatField(validators=[MinValueValidator(0.01)])
     author = models.ForeignKey(User, on_delete = models.CASCADE)
     quantity = models.PositiveIntegerField(validators=[MinValueValidator(1)])
-    bought = models.PositiveIntegerField()
+    bought = models.PositiveIntegerField(default=0)
     creation_date = models.DateTimeField(default=now)
     visits_count = models.IntegerField(default=0)
     name = models.CharField(max_length=128)

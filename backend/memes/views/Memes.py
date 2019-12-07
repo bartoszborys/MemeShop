@@ -44,15 +44,7 @@ class MemesView(GenericAPIView):
 
         dataFrom = step*pageSize
         dataTo = step*pageSize + pageSize
-        ids=request.GET.get('ids', '')
-        memes = Meme.objects.filter(Q(price__gte=priceFrom) & Q(price__lte=priceTo))
-        if len(ids) > 0:
-            try:
-                ids_array = ids.split(",")
-                memes = memes.filter(id__in=ids_array)
-            except ValueError:
-                return HttpResponse(InproperQueryParamException("Ids of memes must be passed as integers separated by commas."), status=500)
-        memes = memes.order_by(sorting)[dataFrom:dataTo]
+        memes = Meme.objects.filter(Q(price__gte=priceFrom) & Q(price__lte=priceTo)).order_by(sorting)[dataFrom:dataTo]
         serializer = MemesSerializer(memes, many=True)
         return JsonResponse(serializer.data, safe=False)
 
@@ -60,9 +52,7 @@ class MemesView(GenericAPIView):
     def post(self, request, *args, **kwargs):
         userSerializer = UserSerializer(request.user)
         userId = userSerializer.data['id']
-        tmpSerializer = {'author_id': userId}
-        tmpSerializer.update(request.data)
-        memeAddSerializer = MemesAddSerializer(data=tmpSerializer)
+        memeAddSerializer = MemesAddSerializer(data=request.data, context={'user_id':userId})
         if memeAddSerializer.is_valid():
             try:
                 memeAddSerializer.save()
