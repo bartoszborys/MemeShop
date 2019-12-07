@@ -1,7 +1,7 @@
 from django.http import JsonResponse, HttpResponse
 from ..models.Meme import Meme
 from ..serializers.MemesSerializer import MemesSerializer
-from ..serializers.UserSerializer import UserSerializer
+from shared.serializers.UserSerializer import UserSerializer
 from ..serializers.MemeAddSerializer import MemesAddSerializer
 from ..serializers.MemeAddSwaggerSerializer import MemeAddSwaggerSerializer
 from rest_framework.generics import GenericAPIView
@@ -16,7 +16,6 @@ class MemesView(GenericAPIView):
     serializer_class = MemeAddSwaggerSerializer
 
     def get(self, request, *args, **kwargs):
-        # return meme as blob!
         step = int(request.GET.get('step', 0))
         pageSize = int(request.GET.get('pageSize', 10))
         priceFrom = int(request.GET.get('priceFrom', 0))

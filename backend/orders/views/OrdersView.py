@@ -2,26 +2,22 @@ from django.http import JsonResponse, HttpResponse
 from rest_framework.generics import GenericAPIView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from exceptions.MemeNameAlreadyExsitsException import MemeNameAlreadyExsitsException
-from django.db.models import Q
-from django.core.exceptions import ValidationError
+from ..serializers.OrderAddSwagerSerializer import OrderAddSwaggerSerializer
+from ..serializers.OrderAddSerializer import OrderAddSerializer
+from shared.serializers.UserSerializer import UserSerializer
+from django.utils.timezone import now
 
 
-class MemesView(GenericAPIView):
+class OrdersView(GenericAPIView):
     serializer_class = OrderAddSwaggerSerializer
 
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
-        step = int(request.GET.get('step', 0))
-        pageSize = int(request.GET.get('pageSize', 10))
-        priceFrom = int(request.GET.get('priceFrom', 0))
-        priceTo = int(request.GET.get('priceTo', 1000000))
-        dataFrom = step*pageSize
-        dataTo = step*pageSize + pageSize
-        sorting = request.GET.get('sorting', "-creation_date")
-        memes = Meme.objects.filter(Q(price__gte=priceFrom) & Q(
-            price__lte=priceTo)).order_by(sorting)[dataFrom:dataTo]
-        serializer = MemesSerializer(memes, many=True)
-        return JsonResponse(serializer.data, safe=False)
-
-    
+        userSerializer = UserSerializer(request.user)
+        userId = userSerializer.data['id']
+        orderSerializer = OrderAddSerializer(data=request.data, context={'user_id':userId, 'order_date': now()}, many=True,)
+        if orderSerializer.is_valid():
+            orderSerializer.save()
+        else:
+            return JsonResponse(orderSerializer.errors, status=500, safe=False)
+        return HttpResponse(status=201)
