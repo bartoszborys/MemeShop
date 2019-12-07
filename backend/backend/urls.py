@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^api/authorization/', include('authorization.urls')),
     url(r'^api/memes/', include('memes.urls')),
     url(r'^api/orders/', include('orders.urls')),
+    url(r'^api/users/', include('users.urls')),
 
     url(r'^auth-jwt-refresh/', refresh_jwt_token),
     url(r'^auth-jwt-verify/', verify_jwt_token),

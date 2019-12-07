@@ -6,6 +6,8 @@ from ..serializers.OrderAddSwagerSerializer import OrderAddSwaggerSerializer
 from ..serializers.OrderAddSerializer import OrderAddSerializer
 from shared.serializers.UserSerializer import UserSerializer
 from django.utils.timezone import now
+from memes.models.Meme import Meme
+from django.db import transaction
 
 
 class OrdersView(GenericAPIView):
@@ -17,7 +19,8 @@ class OrdersView(GenericAPIView):
         userId = userSerializer.data['id']
         orderSerializer = OrderAddSerializer(data=request.data, context={'user_id':userId, 'order_date': now()}, many=True,)
         if orderSerializer.is_valid():
-            orderSerializer.save()
+            with transaction.atomic():
+                orderSerializer.save()
         else:
             return JsonResponse(orderSerializer.errors, status=500, safe=False)
         return HttpResponse(status=201)

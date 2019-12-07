@@ -9,8 +9,6 @@ from django.core.exceptions import ValidationError
 
 class MemesAddSerializer(serializers.ModelSerializer):
 
-    author_id = serializers.IntegerField(source='author.id')
-
     def isUniqueName(self, author_id, name):
         userMemes = Meme.objects.filter(author__id=author_id)
         names = userMemes.filter(name=name)
@@ -19,7 +17,7 @@ class MemesAddSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         name=validated_data['name']
         extension=validated_data['extension']
-        author_id = validated_data['author']['id']
+        author_id = self.context['user_id']
         if not self.isUniqueName(author_id, name):
             raise ValidationError("You already have meme of this name.")
         blobString = validated_data['blob']
@@ -41,4 +39,4 @@ class MemesAddSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MemeAdd
-        fields = ("blob", "id", "author_id", "price", "quantity", "name", "extension")
+        fields = ("blob", "id", "price", "quantity", "name", "extension")
