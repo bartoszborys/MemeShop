@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from ..models.Meme import Meme
-from .UserSerializer import UserSerializer
+from shared.serializers.UserSerializer import UserSerializer
 
 
 class MemeDetailsSerializer(serializers.ModelSerializer):
