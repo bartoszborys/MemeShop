@@ -8,7 +8,7 @@ from rest_framework.generics import GenericAPIView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from exceptions.MemeNameAlreadyExsitsException import MemeNameAlreadyExsitsException
-from django.db.models import Q
+from django.db.models import Q, F
 from django.core.exceptions import ValidationError
 from exceptions.InproperQueryParamException import InproperQueryParamException
 
@@ -16,6 +16,9 @@ SORTING_CHOICES = [ "creation_date", "-creation_date",  "name", "-name", "price"
 
 class MemesView(GenericAPIView):
     serializer_class = MemeAddSwaggerSerializer
+
+    def areNoMemesLeft(self, quantity, bought):
+        return quantity-bought<=0
 
     def get(self, request, *args, **kwargs):
         try:
@@ -44,7 +47,7 @@ class MemesView(GenericAPIView):
 
         dataFrom = step*pageSize
         dataTo = step*pageSize + pageSize
-        memes = Meme.objects.filter(Q(price__gte=priceFrom) & Q(price__lte=priceTo)).order_by(sorting)[dataFrom:dataTo]
+        memes = Meme.objects.filter(Q(price__gte=priceFrom) & Q(price__lte=priceTo)).exclude(Q(quantity__lte=F('bought'))).order_by(sorting)[dataFrom:dataTo]
         serializer = MemesSerializer(memes, many=True)
         return JsonResponse(serializer.data, safe=False)
 
