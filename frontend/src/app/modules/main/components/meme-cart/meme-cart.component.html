@@ -1,5 +1,5 @@
 <p>meme-cart works!</p>
-<table *ngIf="cartMemesOrigin.length > 0" mat-table [dataSource]="cartMemesOrigin" matSort class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="src">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Mem</th>
     <td mat-cell *matCellDef="let element">
