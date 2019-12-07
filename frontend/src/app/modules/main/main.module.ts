@@ -28,7 +28,8 @@ import { MemeResolver } from './components/meme/resolvers/meme-resolver';
     MemeCartComponent, 
     AddMemeComponent, 
     MemeListFiltersComponent, 
-    MemesCardsListComponent, MemeCardComponent,
+    MemesCardsListComponent, 
+    MemeCardComponent,
   ],
   imports: [
     CommonModule,
