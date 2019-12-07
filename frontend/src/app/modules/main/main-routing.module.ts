@@ -7,6 +7,7 @@ import { MemeResolver } from './components/meme/resolvers/meme-resolver';
 import { MemesListComponent } from './components/memes-list/memes-list.component';
 import { MemesListResolver } from './components/memes-list/resolvers/memes-list-resolver';
 import { MainComponent } from './main.component';
+import { MemeCartResolver } from './components/meme-cart/resolver/meme-cart.resolver';
 
 const routes: Routes = [
   {
@@ -41,7 +42,8 @@ const routes: Routes = [
       },
       {
         path: "cart",
-        component: MemeCartComponent
+        component: MemeCartComponent,
+        resolve: {cart: MemeCartResolver}
       }
     ]
   },

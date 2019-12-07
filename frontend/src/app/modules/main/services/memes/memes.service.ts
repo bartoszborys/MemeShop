@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MemeCard } from '../../components/memes-list/models/meme-card.model';
-import { MemeDetails } from '../../components/meme/models/meme-details.model';
+import { MemeDetails } from '../../models/meme-details.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NewMeme } from '../../components/add-meme/models/new-meme.model';
 

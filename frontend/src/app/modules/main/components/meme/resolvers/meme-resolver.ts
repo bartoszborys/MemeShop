@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { MemesService } from '../../../services/memes/memes.service';
 import { MainLoadingBarService } from '../../../services/main-loading-bar/main-loading-bar.service';
 import { map } from 'rxjs/operators';
-import { MemeDetails } from '../models/meme-details.model';
+import { MemeDetails } from '../../../models/meme-details.model';
 
 @Injectable()
 export class MemeResolver implements Resolve<Observable<MemeDetails>> {
