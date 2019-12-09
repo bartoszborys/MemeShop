@@ -3,6 +3,7 @@ import { MemeCard } from './models/meme-card.model';
 import { MemesService } from '../../services/memes/memes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { MemesParams } from '../../services/memes/models/memes-params.model';
 
 @Component({
   selector: 'app-memes-list',
@@ -12,7 +13,10 @@ import { Observable } from 'rxjs';
 export class MemesListComponent implements OnInit {
   @ViewChild('infinityContainer', {static: false}) public infinityContainer: ElementRef;
   public memes: MemeCard[];
+  public params: MemesParams;
+  public apiUrlReplacement: string;
   public memesLoading: Observable<MemeCard[]>;
+  
   public visible: {filter: boolean, memesChunk: boolean} = {
     filter: false,
     memesChunk: false,
@@ -25,6 +29,8 @@ export class MemesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.memes = this.route.snapshot.data.memes;
+    this.params = this.route.snapshot.data.params as MemesParams;
+    this.apiUrlReplacement = this.route.snapshot.data.api_url as string;
   }
 
   scroll(): void {
@@ -47,7 +53,8 @@ export class MemesListComponent implements OnInit {
     }
 
     this.visible.memesChunk = true;
-    this.memes = this.memes.concat((await this.service.getMemesList().toPromise()).slice(0,10));
+    const request: Observable<MemeCard[]> = this.apiUrlReplacement ? this.service.getMemesList(this.params, this.apiUrlReplacement) : this.service.getMemesList(this.params);
+    this.memes = this.memes.concat((await request.toPromise()).slice(0,10));
     this.visible.memesChunk = false;
   }
 }

@@ -1,0 +1,9 @@
+<div *ngIf="editMode; else viewMode">
+  <input class="cart-count-input" type="number" [attr.max]="maxCount" [(ngModel)]="count"/>
+  <button mat-button color="primary" (click)="save()">Zapisz</button>
+  <button mat-button color="warn" (click)="cancel()">Anuluj</button>
+</div>
+<ng-template #viewMode>
+  <span>{{cart.getCount(meme.id)}}</span>
+  <button mat-button color="primary" (click)="edit()">Edytuj</button>
+</ng-template>

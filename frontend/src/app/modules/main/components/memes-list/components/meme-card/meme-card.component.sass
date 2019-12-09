@@ -2,17 +2,32 @@
   width: 300px
   height: 400px
   cursor: pointer
-  padding: 2em
+  margin: 2em
   animation: appear ease-in-out 0.4s forwards
-
-.meme-card
-  box-shadow: 0px 0px 4px 0px #000000b5
-  transition: transform linear 0.15s
-
-.meme-card:hover
-  box-shadow: 0px 0px 10px 3px #000000b5
-  transform: scale(1.1)
-  z-index: 10
+  .meme-card
+    box-shadow: 0px 0px 4px 0px #000000b5
+    transition: transform linear 0.15s
+    background: linen
+    &__price
+      font-size: 2em
+      font-style: italic
+      font-weight: bold
+      color: darkslateblue
+      text-align: end
+      padding: 0 1.5em
+      font-family: Comic Sans MS
+    &__image
+      height: 300px
+      object-fit: fill
+      background: black
+    &__add-to-basket
+      float: right
+    &__add-to-basket-icon
+      margin-right: .25em
+  .meme-card:hover
+    box-shadow: 0px 0px 10px 3px #000000b5
+    transform: scale(1.05)
+    z-index: 10
 
 @keyframes appear
   0%

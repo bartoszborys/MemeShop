@@ -1,8 +1,13 @@
-<mat-card class="meme-card">
+<mat-card class="meme-card" [routerLink]="['/memes', data.id]">
   <mat-card-header>
-    <mat-card-title>Cena: {{data.price}}</mat-card-title>
+    <mat-card-title></mat-card-title>
   </mat-card-header>
-    <img mat-card-image [src]="data.url | apiImage">
+    <img class="meme-card__image" mat-card-image [src]="data.url | apiImage">
   <mat-card-actions>
+    <div class="meme-card__price">{{data.price}} Zł</div>
+    <button class="meme-card__add-to-basket" appStopClickPropagation mat-raised-button color="primary" (click)="addToCart(data.id)">
+      <i class="material-icons meme-card__add-to-basket-icon">add_shopping_cart</i>
+      <span>Dodaj do koszyka</span>
+    </button>
   </mat-card-actions>
 </mat-card>
