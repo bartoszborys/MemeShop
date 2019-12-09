@@ -8,6 +8,7 @@ import { MemesListComponent } from './components/memes-list/memes-list.component
 import { MemesListResolver } from './components/memes-list/resolvers/memes-list-resolver';
 import { MainComponent } from './main.component';
 import { MemeCartResolver } from './components/meme-cart/resolver/meme-cart.resolver';
+import { MemesParams } from './services/memes/models/memes-params.model';
 
 const routes: Routes = [
   {
@@ -21,15 +22,26 @@ const routes: Routes = [
       {
         path: "latest",
         component: MemesListComponent,
-        resolve: {memes: MemesListResolver}
+        resolve: {memes: MemesListResolver},
+        data: {
+          params: {} as MemesParams
+        }
       },
       {
         path: "popular",
         component: MemesListComponent,
+        resolve: {memes: MemesListResolver},
+        data: {
+          params: {sorting: "-visits_count"} as MemesParams
+        }
       },
       {
         path: "my-memes",
         component: MemesListComponent,
+        resolve: {memes: MemesListResolver},
+        data: {
+          api_url: "/api/users/current/memes/exposed",
+        }
       },
       {
         path: "memes/:id",

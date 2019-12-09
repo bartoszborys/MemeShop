@@ -13,42 +13,39 @@ export class MemesCartService {
     return JSON.parse(localStorage.getItem(this.localStorageKey));
   }
 
-  public remove(id: number, count: number = 1) {
-    let basket: MemeCart[] = this.wholeCart;
+  public getCount(id: number): number {
+    const item: MemeCart = (<MemeCart[]>JSON.parse(localStorage.getItem(this.localStorageKey))).find(item => item.id === id);
+    return item ? item.count : 0;
+  }
 
-    if (basket === null) {
-      basket = [];
-    }
-
-    if (basket.some(item => item.id == id)) {
-      const cartElement = basket.find( item => item.id === id);
-      cartElement.count -= count;
-      if (cartElement.count <= 0) {
-        basket = basket.filter( item => item !== cartElement);
-      }
-    }
-    
-    localStorage.setItem(this.localStorageKey, JSON.stringify(basket));
+  public remove(id: number) {
+    let cart: MemeCart[] = this.wholeCart.filter(item => item.id != id);
+    this.saveCart(cart);
   }
 
   public add(id: number, count: number = 1): void {
-    let basket: MemeCart[] = this.wholeCart;
+    let cart: MemeCart[] = this.wholeCart;
 
-    if (basket === null) {
-      basket = [];
+    if (cart === null) {
+      cart = [];
     }
 
-    if (!basket.some(item => item.id == id)) {
-      basket.push({id: id, count: count});
+    if (!cart.some(item => item.id == id)) {
+      cart.push({id: id, count: count});
     } else {
-      basket.find( item => item.id === id).count += count;
+      cart.find( item => item.id === id).count += count;
     }
     
-    localStorage.setItem(this.localStorageKey, JSON.stringify(basket));
+    this.saveCart(cart);
   }
 
-  public getCount(id: number): number | null {
-    const item: MemeCart = (<MemeCart[]>JSON.parse(localStorage.getItem(this.localStorageKey))).find(item => item.id === id);
-    return item ? item.count : null;
+  public set(id: number, count: number): void {
+    const cart: MemeCart[] = this.wholeCart;
+    cart.find(item => item.id = id).count = count;
+    this.saveCart(cart);
+  }
+  
+  private saveCart(cart: MemeCart[]): void {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(cart));
   }
 }

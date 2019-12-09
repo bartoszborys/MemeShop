@@ -9,12 +9,13 @@ import { MemeCartComponent } from './components/meme-cart/meme-cart.component';
 import { AddMemeComponent } from './components/add-meme/add-meme.component';
 import { FormsModule } from '@angular/forms';
 import { MemeListFiltersComponent } from './components/memes-list/components/meme-list-filters/meme-list-filters.component';
-import { MemesCardsListComponent } from './components/memes-list/components/memes-cards-list/memes-cards-list.component';
 import { MemeCardComponent } from './components/memes-list/components/meme-card/meme-card.component';
 import { MemesListResolver } from './components/memes-list/resolvers/memes-list-resolver';
 import { MemeResolver } from './components/meme/resolvers/meme-resolver';
 import { MemeCartResolver } from './components/meme-cart/resolver/meme-cart.resolver';
 import { ApiImagePipe } from './pipes/ApiImage/api-image.pipe';
+import { MemeCartRowCountComponent } from './components/meme-cart/components/meme-cart-row-count/meme-cart-row-count.component';
+import { StopClickPropagationDirective } from './directives/stop-click-propagation/stop-click-propagation.directive';
 
 
 
@@ -31,9 +32,10 @@ import { ApiImagePipe } from './pipes/ApiImage/api-image.pipe';
     MemeCartComponent, 
     AddMemeComponent, 
     MemeListFiltersComponent, 
-    MemesCardsListComponent, 
     MemeCardComponent, 
     ApiImagePipe, 
+    MemeCartRowCountComponent, 
+    StopClickPropagationDirective, 
   ],
   imports: [
     CommonModule,

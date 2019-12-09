@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MemesCardsListComponent } from './memes-cards-list.component';
+import { MemeCartRowCountComponent } from './meme-cart-row-count.component';
 
-describe('MemesCardsListComponent', () => {
-  let component: MemesCardsListComponent;
-  let fixture: ComponentFixture<MemesCardsListComponent>;
+describe('MemeCartRowCountComponent', () => {
+  let component: MemeCartRowCountComponent;
+  let fixture: ComponentFixture<MemeCartRowCountComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MemesCardsListComponent ]
+      declarations: [ MemeCartRowCountComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MemesCardsListComponent);
+    fixture = TestBed.createComponent(MemeCartRowCountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
